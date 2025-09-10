@@ -10,4 +10,6 @@ pinned: false
 short_description: heart_failure
 ---
 
+Try the app from here => https://huggingface.co/spaces/momekky36/heart_failure
+
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
