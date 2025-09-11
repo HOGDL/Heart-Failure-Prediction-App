@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 #  الموديل اللي لسه حفظتيه
-model = joblib.load("/content/grid_search_rf.best_estimator_.pkl")
+model = joblib.load("grid_search_rf.pkl")
 
 # أعمدة الداتا  بالأسامي الصحيحة وبنفس الترتيب
 feature_names = [
