@@ -1,12 +1,9 @@
-
 import gradio as gr
 import joblib
 import pandas as pd
 
 #  الموديل اللي لسه حفظتيه
-model = joblib.load("grid_search_rf.pkl")
-scaler = joblib.load("scaler.pkl")
-
+model = joblib.load("/content/grid_search_rf.best_estimator_.pkl")
 
 # أعمدة الداتا  بالأسامي الصحيحة وبنفس الترتيب
 feature_names = [
@@ -72,20 +69,21 @@ with gr.Blocks() as demo:
     gr.Markdown("## 🫀 Heart Failure Prediction App")
 
     with gr.Row():
-        age = gr.Number(label="Age")
-        anaemia = gr.Radio(["Yes","No"], label="Anaemia")
-        creatinine_phosphokinase = gr.Number(label="Creatinine Phosphokinase")
-        diabetes = gr.Radio(["Yes","No"], label="Diabetes")
-        ejection_fraction = gr.Number(label="Ejection Fraction")
-        high_blood_pressure = gr.Radio(["Yes","No"], label="High Blood Pressure")
+        age = gr.Dropdown(choices=list(range(13,100)),label="Age")
+        sex = gr.Radio(["Male","Female"], label="Sex")
+        smoking = gr.Radio(["Yes","No"], label="Smoking")
+        time= gr.Dropdown(choices=list(range(1,350)),label="Follow-up period (time)")
+
 
     with gr.Row():
         platelets = gr.Number(label="Platelets")
         serum_creatinine = gr.Number(label="Serum Creatinine")
         serum_sodium = gr.Number(label="Serum Sodium")
-        sex = gr.Radio(["Male","Female"], label="Sex")
-        smoking = gr.Radio(["Yes","No"], label="Smoking")
-        time = gr.Number(label="Time (days)")
+        anaemia = gr.Radio(["Yes","No"], label="Anaemia")
+        creatinine_phosphokinase = gr.Number(label="Creatinine Phosphokinase")
+        diabetes = gr.Radio(["Yes","No"], label="Diabetes")
+        high_blood_pressure = gr.Radio(["Yes","No"], label="High Blood Pressure")
+        ejection_fraction = gr.Number(label="Ejection Fraction")
 
     btn = gr.Button("Predict")
     out = gr.Textbox(label="Result")
